@@ -18,6 +18,10 @@ export default function MachineForm({ machine, categories, onSubmit, isSubmittin
   const [name, setName] = useState(machine?.name ?? "");
   const [brand, setBrand] = useState(machine?.brand ?? "");
   const [model, setModel] = useState(machine?.model ?? "");
+  const [year, setYear] = useState(machine?.year?.toString() ?? "");
+  const [hours, setHours] = useState(machine?.hours?.toString() ?? "");
+  const [kms, setKms] = useState(machine?.kms?.toString() ?? "");
+  const [specs, setSpecs] = useState(machine?.specs ?? "");
   const [location, setLocation] = useState(machine?.location ?? "");
   const [description, setDescription] = useState(machine?.description ?? "");
   const [price, setPrice] = useState(machine?.price?.toString() ?? "");
@@ -41,6 +45,10 @@ export default function MachineForm({ machine, categories, onSubmit, isSubmittin
         name,
         brand,
         model,
+        year,
+        hours,
+        kms,
+        specs,
         location,
         description,
         price,
@@ -96,12 +104,56 @@ export default function MachineForm({ machine, categories, onSubmit, isSubmittin
         </div>
 
         <div>
+          <label className="block text-sm font-medium text-zinc-700 mb-1">Año</label>
+          <input
+            type="number"
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+            placeholder="Ej: 2020"
+            className="w-full px-3 py-2 border border-zinc-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-zinc-700 mb-1">Horas</label>
+          <input
+            type="number"
+            value={hours}
+            onChange={(e) => setHours(e.target.value)}
+            placeholder="Ej: 5000"
+            className="w-full px-3 py-2 border border-zinc-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-zinc-700 mb-1">KMs</label>
+          <input
+            type="number"
+            value={kms}
+            onChange={(e) => setKms(e.target.value)}
+            placeholder="Ej: 100000"
+            className="w-full px-3 py-2 border border-zinc-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+          />
+        </div>
+
+        <div>
           <label className="block text-sm font-medium text-zinc-700 mb-1">Ubicación</label>
           <input
             type="text"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             placeholder="Ej: Barcelona, Madrid..."
+            className="w-full px-3 py-2 border border-zinc-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+          />
+        </div>
+
+        <div className="md:col-span-2">
+          <label className="block text-sm font-medium text-zinc-700 mb-1">Características técnicas</label>
+          <textarea
+            rows={4}
+            value={specs}
+            onChange={(e) => setSpecs(e.target.value)}
+            placeholder="Ej: Motor 5.5kW, Velocidad max 4000rpm, Peso 2000kg..."
             className="w-full px-3 py-2 border border-zinc-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
           />
         </div>

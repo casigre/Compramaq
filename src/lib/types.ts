@@ -3,6 +3,10 @@ export interface Machine {
   name: string;
   brand: string | null;
   model: string | null;
+  year: number | null;
+  hours: number | null;
+  kms: number | null;
+  specs: string | null;
   location: string | null;
   description: string | null;
   price: number | null;
@@ -53,6 +57,10 @@ export type MachineFormData = {
   name: string;
   brand: string;
   model: string;
+  year: string;
+  hours: string;
+  kms: string;
+  specs: string;
   location: string;
   description: string;
   price: string;
