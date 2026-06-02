@@ -28,7 +28,7 @@ export default async function EditMachinePage({ params }: { params: Promise<{ id
 
   return (
     <div className="max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Editar máquina</h1>
+      <h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Editar máquina</h1>
       <EditMachineForm
         machine={machineWithImages}
         categories={(categories ?? []) as Category[]}

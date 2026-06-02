@@ -30,7 +30,7 @@ export default async function ShareMachinePage({ params }: Props) {
     <div className="max-w-4xl mx-auto">
       <div className="bg-white rounded-xl border border-zinc-200 overflow-hidden">
         {imgs.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-1 p-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-0.5 p-0.5">
             {imgs.map((img) => (
               <div key={img.id} className="aspect-[4/3] bg-zinc-100 rounded-lg overflow-hidden">
                 <img src={img.url} alt={m.name} className="w-full h-full object-cover" />
@@ -39,10 +39,10 @@ export default async function ShareMachinePage({ params }: Props) {
           </div>
         )}
 
-        <div className="p-6 space-y-4">
+        <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
           <div className="flex items-start justify-between">
             <div>
-              <h1 className="text-2xl font-bold">{(m.brand || m.model) ? `${m.brand ?? ""} ${m.model ?? ""}`.trim() : m.name}</h1>
+              <h1 className="text-lg sm:text-2xl font-bold break-words">{(m.brand || m.model) ? `${m.brand ?? ""} ${m.model ?? ""}`.trim() : m.name}</h1>
               {categoryName && (
                 <p className="text-sm text-zinc-500 mt-1">{categoryName}</p>
               )}
@@ -51,15 +51,15 @@ export default async function ShareMachinePage({ params }: Props) {
           </div>
 
           {m.price != null && (
-            <p className="text-3xl font-bold">
+            <p className="text-2xl sm:text-3xl font-bold">
               {new Intl.NumberFormat("es-ES", { style: "currency", currency: m.currency }).format(Number(m.price))}
             </p>
           )}
 
-          <div className="flex flex-wrap gap-4 text-sm">
+          <div className="flex flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm">
             {m.year && (
               <span className="flex items-center gap-1 text-zinc-600">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 {m.year}
@@ -67,7 +67,7 @@ export default async function ShareMachinePage({ params }: Props) {
             )}
             {m.hours != null && (
               <span className="flex items-center gap-1 text-zinc-600">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 {m.hours.toLocaleString()} h
@@ -75,7 +75,7 @@ export default async function ShareMachinePage({ params }: Props) {
             )}
             {m.kms != null && (
               <span className="flex items-center gap-1 text-zinc-600">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
                 {m.kms.toLocaleString()} km
@@ -83,7 +83,7 @@ export default async function ShareMachinePage({ params }: Props) {
             )}
             {m.location && (
               <span className="flex items-center gap-1 text-zinc-600">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
@@ -93,13 +93,13 @@ export default async function ShareMachinePage({ params }: Props) {
           </div>
 
           {m.description && (
-            <p className="text-zinc-600 whitespace-pre-wrap">{m.description}</p>
+            <p className="text-sm sm:text-base text-zinc-600 whitespace-pre-wrap">{m.description}</p>
           )}
 
           {m.specs && (
-            <div className="bg-zinc-50 rounded-lg p-4">
+            <div className="bg-zinc-50 rounded-lg p-3 sm:p-4">
               <p className="text-xs text-zinc-500 font-medium uppercase mb-1">Características técnicas</p>
-              <p className="text-sm text-zinc-700 whitespace-pre-wrap">{m.specs}</p>
+              <p className="text-xs sm:text-sm text-zinc-700 whitespace-pre-wrap">{m.specs}</p>
             </div>
           )}
 
@@ -108,9 +108,9 @@ export default async function ShareMachinePage({ params }: Props) {
               href={m.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-blue-600 hover:underline"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm text-blue-600 hover:underline break-all"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
               Ver anuncio original

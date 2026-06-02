@@ -23,18 +23,18 @@ export default async function MachinesPage() {
   const machineImages = Object.fromEntries(machines.map((m) => [m.id, images.filter((i) => i.machine_id === m.id)]));
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Máquinas</h1>
+        <h1 className="text-xl sm:text-2xl font-bold">Máquinas</h1>
         <a
           href="/machines/new"
-          className="inline-flex items-center px-4 py-2 rounded-lg bg-zinc-900 text-white text-sm font-medium hover:bg-zinc-700"
+          className="inline-flex items-center px-3 sm:px-4 py-2 rounded-lg bg-zinc-900 text-white text-xs sm:text-sm font-medium hover:bg-zinc-700"
         >
-          + Nueva máquina
+          + Nueva
         </a>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
         {machines.map((m) => {
           const firstImage = getFirstImage(m.id, images);
           return (

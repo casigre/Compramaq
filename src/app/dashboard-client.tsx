@@ -53,9 +53,9 @@ export default function DashboardClient({ machines, images, categories }: Props)
   const categoryMap = Object.fromEntries(categories.map((c) => [c.id, c.name]));
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-wrap gap-3 items-center">
-        <div className="relative flex-1 min-w-[220px]">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-center">
+        <div className="relative w-full sm:flex-1">
           <input
             type="text"
             placeholder="Buscar por marca, modelo o ubicación..."
@@ -68,37 +68,39 @@ export default function DashboardClient({ machines, images, categories }: Props)
           </svg>
         </div>
 
-        <select
-          value={filterCategory}
-          onChange={(e) => setFilterCategory(e.target.value)}
-          className="px-3 py-2.5 border border-zinc-300 rounded-lg text-sm bg-white"
-        >
-          <option value="">Tipo: Todas</option>
-          {categories.map((cat) => (
-            <option key={cat.id} value={cat.id}>{cat.name}</option>
-          ))}
-        </select>
+        <div className="flex gap-2 sm:gap-3">
+          <select
+            value={filterCategory}
+            onChange={(e) => setFilterCategory(e.target.value)}
+            className="flex-1 sm:flex-none px-3 py-2.5 border border-zinc-300 rounded-lg text-sm bg-white"
+          >
+            <option value="">Tipo: Todas</option>
+            {categories.map((cat) => (
+              <option key={cat.id} value={cat.id}>{cat.name}</option>
+            ))}
+          </select>
 
-        <select
-          value={filterStatus}
-          onChange={(e) => setFilterStatus(e.target.value)}
-          className="px-3 py-2.5 border border-zinc-300 rounded-lg text-sm bg-white"
-        >
-          <option value="">Estado: Todos</option>
-          <option value="pending">Pendiente</option>
-          <option value="contacted">Contactado</option>
-          <option value="bought">Comprado</option>
-          <option value="discarded">Descartado</option>
-        </select>
+          <select
+            value={filterStatus}
+            onChange={(e) => setFilterStatus(e.target.value)}
+            className="flex-1 sm:flex-none px-3 py-2.5 border border-zinc-300 rounded-lg text-sm bg-white"
+          >
+            <option value="">Estado: Todos</option>
+            <option value="pending">Pendiente</option>
+            <option value="contacted">Contactado</option>
+            <option value="bought">Comprado</option>
+            <option value="discarded">Descartado</option>
+          </select>
+        </div>
       </div>
 
       {brands.length > 0 && (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
           {brands.map((brand) => (
             <button
               key={brand}
               onClick={() => setSearch(search === brand ? "" : brand)}
-              className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
+              className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
                 search === brand
                   ? "bg-zinc-900 text-white border-zinc-900"
                   : "bg-white text-zinc-600 border-zinc-300 hover:border-zinc-900"
@@ -115,7 +117,7 @@ export default function DashboardClient({ machines, images, categories }: Props)
           <p className="text-lg">No se encontraron máquinas</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
           {filtered.map((m) => {
             const firstImage = getFirstImage(m.id, images);
             return (

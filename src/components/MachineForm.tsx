@@ -67,8 +67,8 @@ export default function MachineForm({ machine, categories, onSubmit, isSubmittin
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         <div className="md:col-span-2">
           <label className="block text-sm font-medium text-zinc-700 mb-1">Nombre *</label>
           <input

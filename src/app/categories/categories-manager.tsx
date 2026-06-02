@@ -70,7 +70,7 @@ export default function CategoriesManager({ initialCategories }: { initialCatego
   return (
     <div className="max-w-2xl mx-auto space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Categorías</h1>
+        <h1 className="text-xl sm:text-2xl font-bold">Categorías</h1>
         {!isAdding && !editingId && (
           <button
             onClick={() => setIsAdding(true)}
