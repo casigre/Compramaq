@@ -3,6 +3,7 @@ import type { Machine, MachineImage, Category } from "@/lib/types";
 import StatusBadge from "@/components/StatusBadge";
 import ShareButton from "@/components/ShareButton";
 import Link from "next/link";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 
 interface Props {
@@ -28,8 +29,10 @@ export default async function MachineDetailPage({ params }: Props) {
     : { data: null };
   const catName = (category as { name: string } | null)?.name;
 
+  const host = (await headers()).get("host") || "localhost:3000";
+  const protocol = host.includes("localhost") ? "http" : "https";
   const shareUrl = m.is_public
-    ? `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/machines/${id}/share`
+    ? `${protocol}://${host}/machines/${id}/share`
     : null;
 
   return (
