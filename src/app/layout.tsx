@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 
 export const metadata: Metadata = {
-  title: "Alojamiento - Gestión de Maquinaria",
+  title: "Máquinas Vistas - Gestión de Maquinaria",
   description: "Guarda y comparte maquinaria que ves para comprar",
 };
 
