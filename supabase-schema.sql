@@ -15,6 +15,9 @@ CREATE TABLE categories (
 CREATE TABLE machines (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name TEXT NOT NULL,
+  brand TEXT,
+  model TEXT,
+  location TEXT,
   description TEXT,
   price NUMERIC(10,2),
   currency TEXT NOT NULL DEFAULT 'EUR',

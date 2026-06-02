@@ -16,6 +16,9 @@ export default function MachineForm({ machine, categories, onSubmit, isSubmittin
   const submitting = externalSubmitting || isSubmitting;
 
   const [name, setName] = useState(machine?.name ?? "");
+  const [brand, setBrand] = useState(machine?.brand ?? "");
+  const [model, setModel] = useState(machine?.model ?? "");
+  const [location, setLocation] = useState(machine?.location ?? "");
   const [description, setDescription] = useState(machine?.description ?? "");
   const [price, setPrice] = useState(machine?.price?.toString() ?? "");
   const [currency, setCurrency] = useState(machine?.currency ?? "EUR");
@@ -36,6 +39,9 @@ export default function MachineForm({ machine, categories, onSubmit, isSubmittin
     try {
       await onSubmit({
         name,
+        brand,
+        model,
+        location,
         description,
         price,
         currency,
@@ -56,12 +62,34 @@ export default function MachineForm({ machine, categories, onSubmit, isSubmittin
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-zinc-700 mb-1">Nombre *</label>
+          <label className="block text-sm font-medium text-zinc-700 mb-1">Marca</label>
           <input
             type="text"
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={brand}
+            onChange={(e) => setBrand(e.target.value)}
+            placeholder="Ej: Haas, Mazak, DMG..."
+            className="w-full px-3 py-2 border border-zinc-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-zinc-700 mb-1">Modelo</label>
+          <input
+            type="text"
+            value={model}
+            onChange={(e) => setModel(e.target.value)}
+            placeholder="Ej: VF-2, ST-20..."
+            className="w-full px-3 py-2 border border-zinc-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-zinc-700 mb-1">Ubicación</label>
+          <input
+            type="text"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            placeholder="Ej: Barcelona, Madrid..."
             className="w-full px-3 py-2 border border-zinc-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
           />
         </div>

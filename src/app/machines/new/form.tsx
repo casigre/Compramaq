@@ -14,6 +14,9 @@ export default function NewMachineForm({ categories }: { categories: Category[] 
       .from("machines")
       .insert({
         name: data.name,
+        brand: data.brand || null,
+        model: data.model || null,
+        location: data.location || null,
         description: data.description || null,
         price: data.price ? parseFloat(data.price) : null,
         currency: data.currency,

@@ -1,6 +1,9 @@
 export interface Machine {
   id: string;
   name: string;
+  brand: string | null;
+  model: string | null;
+  location: string | null;
   description: string | null;
   price: number | null;
   currency: string;
@@ -48,6 +51,9 @@ export interface SharedListMachine {
 
 export type MachineFormData = {
   name: string;
+  brand: string;
+  model: string;
+  location: string;
   description: string;
   price: string;
   currency: string;
