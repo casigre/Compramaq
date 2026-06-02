@@ -62,6 +62,18 @@ export default function MachineForm({ machine, categories, onSubmit, isSubmittin
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="md:col-span-2">
+          <label className="block text-sm font-medium text-zinc-700 mb-1">Nombre *</label>
+          <input
+            type="text"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Identificador de la máquina"
+            className="w-full px-3 py-2 border border-zinc-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+          />
+        </div>
+
+        <div className="md:col-span-2">
           <label className="block text-sm font-medium text-zinc-700 mb-1">Marca</label>
           <input
             type="text"
