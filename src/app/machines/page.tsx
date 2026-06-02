@@ -41,6 +41,7 @@ export default async function MachinesPage() {
             <MachineCard
               key={m.id}
               id={m.id}
+              name={m.name}
               brand={m.brand}
               model={m.model}
               price={m.price != null ? Number(m.price) : null}

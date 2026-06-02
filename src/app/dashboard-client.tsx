@@ -122,6 +122,7 @@ export default function DashboardClient({ machines, images, categories }: Props)
               <MachineCard
                 key={m.id}
                 id={m.id}
+                name={m.name}
                 imageUrl={firstImage?.url}
                 brand={m.brand}
                 model={m.model}

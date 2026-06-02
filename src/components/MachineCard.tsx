@@ -2,6 +2,7 @@ import StatusBadge from "./StatusBadge";
 
 interface MachineCardProps {
   id: string;
+  name: string;
   imageUrl?: string | null;
   brand?: string | null;
   model?: string | null;
@@ -12,7 +13,8 @@ interface MachineCardProps {
   categoryName?: string | null;
 }
 
-export default function MachineCard({ id, imageUrl, brand, model, price, currency, location, status, categoryName }: MachineCardProps) {
+export default function MachineCard({ id, name, imageUrl, brand, model, price, currency, location, status, categoryName }: MachineCardProps) {
+  const title = (brand || model) ? `${brand ?? ""} ${model ?? ""}`.trim() : name;
   return (
     <a
       href={`/machines/${id}`}
@@ -20,7 +22,7 @@ export default function MachineCard({ id, imageUrl, brand, model, price, currenc
     >
       <div className="aspect-[4/3] bg-zinc-100 overflow-hidden">
         {imageUrl ? (
-          <img src={imageUrl} alt={`${brand ?? ""} ${model ?? ""}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+          <img src={imageUrl} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-zinc-400">
             <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -31,9 +33,7 @@ export default function MachineCard({ id, imageUrl, brand, model, price, currenc
       </div>
       <div className="p-4 space-y-1.5">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-medium text-zinc-900 truncate">
-            {(brand || model) ? `${brand ?? ""} ${model ?? ""}`.trim() : "Sin marca"}
-          </h3>
+          <h3 className="font-medium text-zinc-900 truncate">{title}</h3>
           <StatusBadge status={status} />
         </div>
         {price != null && (
